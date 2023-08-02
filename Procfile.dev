@@ -1,0 +1,4 @@
+redis: redis-server
+sidekiq: sidekiq
+mailcatcher: mailcatcher
+web: bin/rails server -p 3000

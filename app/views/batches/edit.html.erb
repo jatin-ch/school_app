@@ -1,0 +1,6 @@
+<h1>Editing Batch</h1>
+
+<%= render 'form', school: @school, course: @course, batch: @batch %>
+
+<%= link_to 'Show', school_course_batch_path(@school, @course, @batch) %> |
+<%= link_to 'Back', school_course_batches_path %>

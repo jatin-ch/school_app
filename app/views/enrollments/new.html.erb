@@ -1,0 +1,5 @@
+<h1>New Enrollment</h1>
+
+<%= render 'form', school: @school, course: @course, batch: @batch, enrollment: @enrollment %>
+
+<%= link_to 'Back', school_course_batch_enrollments_path(@school, @course, @batch) %>

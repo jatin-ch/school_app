@@ -1,0 +1,68 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"></script>
+
+<%= form_with(model: [school, course, batch, enrollment]) do |form| %>
+  <%= render 'partials/errors', record: enrollment %>
+
+  <div class="row">
+    <% unless current_user.student? %>
+    <div class="col">
+      <%= form.label :user_id %>
+      <%= form.select :user_id, @users, {include_blank: 'Select a Student'}, {class: "form-select", required: true} %>
+      <%= link_to 'New Student', new_user_path(ref: request.url) %>
+    </div>
+    <% end %>
+  </div>
+  <br/>
+  
+  <br>
+  <div class="row">
+    <% unless current_user.student? %>
+    <div class="col">
+      <%= form.label :status %>
+      <%= form.select :status, Enrollment.statuses, {}, {class: "form-select" } %>
+    </div>
+    <% end %>
+    <div class="col">
+      <br>
+      <%= form.submit class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
+<br>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("select").select2();
+
+    $("#enrollment_school_id").change(function() {
+      $("#enrollment_batch_id").html("<option value=''>Select a Batch</option>");
+      $("#enrollment_course_id").html("<option value=''>Select a Course</option>");
+      var id = $("#enrollment_school_id").val();
+
+      $.get("/schools/"+ id +"/courses", function(courses) {
+        var options = ""
+        for (let i = 0; i < courses.length; i++) {
+          options += "<option value="+courses[i][1]+">"+courses[i][0]+"</option>"
+        }
+        $("#enrollment_course_id").append(options);
+        $("#enrollment_course_id").select2();
+        $("#enrollment_batch_id").select2();
+      });
+    });
+
+    $("#enrollment_course_id").change(function() {
+      $("#enrollment_batch_id").html("<option value=''>Select a Batch</option>");
+      var id = $("#enrollment_course_id").val();
+
+      $.get("/courses/"+ id +"/batches", function(batches) {
+        var options = ""
+        for (let i = 0; i < batches.length; i++) {
+          options += "<option value="+batches[i][1]+">"+batches[i][0]+"</option>"
+        }
+        $("#enrollment_batch_id").append(options);
+        $("#enrollment_batch_id").select2();
+      });
+    });
+  })
+</script>

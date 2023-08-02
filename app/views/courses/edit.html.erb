@@ -1,0 +1,6 @@
+<h1>Editing Course</h1>
+
+<%= render 'form', school: @school, course: @course %>
+
+<%= link_to 'Show', school_course_path(@school, @course) %> |
+<%= link_to 'Back', school_courses_path %>

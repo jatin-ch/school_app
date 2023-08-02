@@ -1,0 +1,13 @@
+ <div class="row">
+ 	<ul class="pagination">
+    <% page_url = request.base_url + request.path + '?page=' %>
+ 		<% range = (params[:page].to_i - 4) .. (params[:page].to_i + 4) %>
+ 		<% for i in range %>
+ 		<% if i > 0 %>
+        <li class="page-item">
+          <a class="page-link <%= (i == params[:page].to_i) ? 'disabled' : '' %>" href="<%= (page_url+i.to_s) %>"><%= i %></a>
+        </li>
+        <% end %>
+        <% end %>
+    </ul>
+ </div>

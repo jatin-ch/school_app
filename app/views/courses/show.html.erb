@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col">
+    <p>
+      <strong>Name:</strong>
+      <%= @course.name %>
+    </p>
+
+    <%= form_with(model:[ @school, @course], method: :delete) do |form| %>
+      <%= form.submit 'Delete Course', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+
+    <%= link_to 'Edit', edit_school_course_path(@school, @course) %> |
+    <%= link_to 'Back', school_courses_path %>
+  </div>
+
+  <div class="col">
+    <p>
+      <strong>Batches:</strong>
+    </p>
+    <%= link_to 'List', school_course_batches_path(@school, @course) %> |
+    <%= link_to 'New', new_school_course_batch_path(@school, @course) %>
+  </div>
+</div>

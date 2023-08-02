@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Batches</h1>
+<%= link_to 'New Batch', new_school_course_batch_path, class: 'btn btn-primary' %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @batches.each do |batch| %>
+      <tr>
+        <td><%= batch.name %></td>
+        <td><%= batch.size %></td>
+        <td><%= batch.start_date.strftime("%d %B %Y") %></td>
+        <td><%= batch.end_date.strftime("%d %B %Y") %></td>
+        <td><%= batch.status %></td>
+        <td><%= link_to 'Enrollments', school_course_batch_enrollments_path(@school, @course, batch) %></td>
+        <td><%= link_to 'Show', school_course_batch_path(@school, @course, batch) %></td>
+        <td><%= link_to 'Edit', edit_school_course_batch_path(@school, @course, batch) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'partials/pagination' %>

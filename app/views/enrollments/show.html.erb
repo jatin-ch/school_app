@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p><strong>User:</strong> <%= @enrollment.user.name %></p>
+
+<%= form_with(model: [@school, @course, @batch, @enrollment], method: :delete) do |form| %>
+  <%= form.submit 'Delete Enrollment', class: 'btn btn-danger btn-sm' %>
+<% end %>
+
+<%= link_to 'Edit', edit_school_course_batch_enrollment_path(@school, @course, @batch, @enrollment) %> |
+<%= link_to 'Back', school_course_batch_enrollments_path(@school, @course, @batch) %>

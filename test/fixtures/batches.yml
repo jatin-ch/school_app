@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  id: 1
+  name: B1
+  size: 200
+  course_id: 1
+  status: started
+  start_date: 2023-08-15
+  end_date: 2023-10-15
+#
+two:
+  id: 2
+  name: B2
+  size: 200
+  course_id: 2
+  status: started
+  start_date: 2023-08-15
+  end_date: 2023-10-15
+
+three:
+  name: B3
+  size: 200
+  course_id: 2
+  status: started
+  start_date: 2023-08-15
+  end_date: 2023-10-15

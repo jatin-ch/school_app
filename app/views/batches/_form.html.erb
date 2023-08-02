@@ -1,0 +1,41 @@
+<%= form_with(model: [school, course, batch]) do |form| %>
+  <%= render 'partials/errors', record: batch %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", required: true %>
+    </div>
+
+    <div class="col">
+      <%= form.label :size %>
+      <%= form.number_field :size, class: "form-control", required: true, min: 1 %>
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :start_date %>
+      <%= form.date_select :start_date, start_year: Date.current.year, class: "form-control" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :end_date %>
+      <%= form.date_select :end_date, start_year: Date.current.year, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :status %>
+      <%= form.select :status, Batch.statuses, {}, {class: "form-select", disabled: !current_user } %>
+    </div>
+    <div class="col">
+      <br>
+      <%= form.submit class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
+<br>

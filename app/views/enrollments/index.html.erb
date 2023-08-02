@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Enrollments</h1>
+<%= link_to 'New Enrollment', new_school_course_batch_enrollment_path, class: 'btn btn-primary' %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Status</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.user.name %></td>
+        <td><%= enrollment.status %></td>
+        <td><%= link_to 'Show', school_course_batch_enrollment_path(@school, @course, @batch, enrollment) %></td>
+        <td><%= link_to 'Edit', edit_school_course_batch_enrollment_path(@school, @course, @batch, enrollment) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'partials/pagination' %>

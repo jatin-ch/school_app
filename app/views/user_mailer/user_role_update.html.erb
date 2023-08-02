@@ -1,0 +1,9 @@
+<p>Hi, <%= @user.name %></p><br>
+
+<p>Your role has been updated to <strong><%= @user.kind.titleize %></strong> in School App.</p>
+<% if @user.school_admin? %>
+<p>You are now school admin. <a href="<%= schools_url %>">Click here</a> to check more details about your role</p>
+<% end %>
+<br>
+
+<p>Thanks and have a great day!</p>

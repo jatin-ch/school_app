@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Classmates</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td>
+          <%= enrollment.user_id.eql?(current_user.id) ? '<font color="green">You</font>'.html_safe : enrollment.user.name %>
+        </td>
+        <td><%= enrollment.status %></td>
+      </tr>
+    <% end %>
+  </tbody>

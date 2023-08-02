@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+<%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Kind</th>
+      <th>Active</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.kind %></td>
+        <td><%= user.active %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'partials/pagination' %>

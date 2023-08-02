@@ -1,0 +1,34 @@
+<%= form_with(model: user) do |form| %>
+  <%= render 'partials/errors', record: user %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "form-control" %>
+    </div>
+  </div>
+  <br/>
+
+  <%= hidden_field_tag :ref, params[:ref]  %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :kind %>
+      <%= form.select :kind, @user_kind, {}, {class: "form-select"} %>
+    </div>
+    <div class="col">
+      <br>
+      <%= form.label :active %>
+      <%= form.check_box :active, {class: "form-check-input"} %>
+    </div>
+    <div class="col">
+      <br>
+      <%= form.submit class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
+<br>

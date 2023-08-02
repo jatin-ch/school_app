@@ -1,0 +1,38 @@
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="/">Home</a>
+  </li>
+  <% if current_user %>
+    <% if current_user.admin? %>
+      <li class="nav-item">
+        <a class="nav-link" href="/schools">Schools</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users">Users</a>
+      </li>
+    <% elsif current_user.school_admin? %>
+      <li class="nav-item">
+        <a class="nav-link" href="/schools">Schools</a>
+      </li>
+    <% elsif current_user.student? %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/enrollments">Enrollments</a>
+      </li>
+    <% end %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+        <%= current_user.name %>
+      </a>
+       <ul class="dropdown-menu">
+        <li class="nav-item">
+          <a class="nav-link" href="/users/profile">Profile</a>
+        </li>
+        <li>
+          <%= form_for(current_user, url: sign_out_users_path, method: :delete) do |f| %>
+            <%= f.submit "Sign out", class: 'btn' %>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,16 @@
+<ol class="breadcrumb">
+  <% e = nav.size - 1 %>
+  <% nav.each_with_index do |n, i| %>
+    <% if e.eql?(i) %>
+      <li class="breadcrumb-item active">
+        <small><%= n[:title] %></small>
+      </li>
+    <% else %>
+      <li class="breadcrumb-item">
+        <small>
+          <%= link_to n[:title], n[:url], style: 'color: green' %>
+        </small>
+      </li>
+    <% end %>
+  <% end %>      
+</ol>

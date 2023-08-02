@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col">
+    <p>
+      <strong>Name:</strong>
+      <%= @school.name %>
+    </p>
+
+    <% if current_user.admin? %>
+      <%= form_with(model: @school, method: :delete) do |form| %>
+        <%= form.submit 'Delete School', class: 'btn btn-danger btn-sm' %>
+      <% end %>
+    <% end %>
+
+    <%= link_to 'Edit', edit_school_path(@school) %> |
+    <%= link_to 'Back', schools_path %>
+  </div>
+
+  <div class="col">
+    <p>
+      <strong>Courses:</strong>
+    </p>
+    <%= link_to 'List', school_courses_path(@school) %> |
+    <%= link_to 'New', new_school_course_path(@school) %>
+  </div>
+</div>

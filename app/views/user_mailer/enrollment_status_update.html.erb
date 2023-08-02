@@ -1,0 +1,13 @@
+<p>Hi, <%= @user.name %></p><br>
+
+<p>Your enrollment request for following details is <strong><%= @enrollment.status %></strong>.</p>
+<p><strong>School:</strong> <%= @school.name %></p>
+<p><strong>Course:</strong> <%= @course.name %></p>
+<p>
+  <strong>Batch:</strong> <%= @batch.name %> 
+  <small>(<%= @batch.start_date.strftime("%d %B %Y") %> - <%= @batch.end_date.strftime("%d %B %Y") %>)</small>
+</p><br>
+
+<p><a href="<%= @enrollment_url %>">Click here</a> to check more details on your enrollment request.</p><br>
+
+<p>Thanks and have a great day!</p>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col">
+    <p>
+      <strong>Name:</strong>
+      <%= @batch.name %>
+    </p>
+    <p>Start Date: <%= @batch.start_date.strftime("%d %B %Y") %></p>
+    <p>End Date: <%= @batch.end_date.strftime("%d %B %Y") %></p>
+    <p>Size: <%= @batch.size %></p>
+    <p>Status: <%= @batch.status %></p>
+
+    <%= form_with(model: [@school, @course, @batch], method: :delete) do |form| %>
+      <%= form.submit 'Delete Batch', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+
+    <%= link_to 'Edit', edit_school_course_batch_path(@school, @course, @batch) %> |
+    <%= link_to 'Back', school_course_batches_path %>
+  </div>
+
+  <div class="col">
+    <p>
+      <strong>Enrollments:</strong>
+    </p>
+    <%= link_to 'List', school_course_batch_enrollments_path(@school, @course, @batch) %> |
+    <%= link_to 'New', new_school_course_batch_enrollment_path(@school, @course, @batch) %>
+  </div>
+</div>
